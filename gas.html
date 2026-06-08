@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <script>
+      let kenny = "pass";
+      let kenny2 = "keith";
+
+      document.getElementById("demo").innerHTML = kenny + " " + kenny2;
+    </script>
+    <p id="kk"></p>
+    <script>
+        let x = 10;
+
+        document.getElementById("kk").innerHTML = (x > 40);
+
+    </script>
+
+    <p id="pp"></p>
+
+    <script>
+        let text1 = "B";
+        let text2 = "C";
+        let    result  = text1 > text2;
+
+        document.getElementById("pp").innerHTML = "is B less than C? " + result;
+    </script>
+
+    <p id="ff">good evening</p>
+
+    <script>
+      if (new Date().getHours() < 18) {
+        document.getElementById("ff").innerHTML = "good day";
+      }
+    </script>
+
+    <p id="ing"></p>
+    <script>
+      let age =20;
+      let text = "you can not drive";
+
+      if (age >=18){
+        text ="you can drive";
+      }
+      document.getElementById("ing").innerHTML = text;
+    </script>
+    <p id="ing2"></p>
+
+    <script>
+      const time = new date ().gethours();
+      let greeting;
+      if (time < 10) {
+        greeting ="good morning";
+      }else if (time < 20) {
+        greeting = "good day";
+      }else{
+        greeting = "good evening";
+      }
+      document.getElementById("ing2").innerHTML = greeting;
+    </script>
+  
+  
+
+  </body>
+</html>

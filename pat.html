@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+
+        body{
+            background: linear-gradient(to right , #141e30, #243b55);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator{
+            width: 370px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px black;
+        }
+
+        .top{
+            background: #111;
+            color: white;
+            padding: 20px;
+            text-align: center;
+
+        }
+
+        .top h1 {
+            border-bottom: 10px;
+        }
+
+        .time{
+            font-size: 14px;
+            color: lightgray;
+        }
+
+        .display-box{
+            padding: 20px;
+            background: #222;
+        }
+        #display{
+            width: 100%;
+            height: 80px;
+            border: none;
+            outline: none;
+            background: black;
+            color: #00ff88;
+            font-size: 35px;
+            text-align: right;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .buttons{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        button{
+            height: 65px;
+            border: none;
+            border-radius: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+
+        }
+
+        button:hover{
+            transform: scale(1.05);
+        }
+
+        .number{
+            background: white;
+            box-shadow: 0 0 5px;
+        }
+
+        .operator{
+            background: orange;
+            color: white;
+        }
+
+        .equal{
+            background: green;
+            color: white;
+        }
+
+        .clear{
+            background: green;
+            color: white;
+        }
+
+        .delete{
+            background: #555;
+            color: white;
+        }
+
+        .history{
+      background:white;
+      padding:15px;
+      border-top:1px solid lightgray;
+      max-height:150px;
+      overflow:auto;
+    }
+
+    .history h3{
+      margin-bottom:10px;
+    }
+
+    #historyList{
+      font-size:14px;
+      color:#333;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111;
+      color:white;
+      text-align:center;
+      padding:10px;
+      font-size:14px;
+    }
+    </style>
+</head>
+<body>
+
+  <div class="calculator">
+
+    <!-- TOP -->
+
+    <div class="top">
+      <h1>Smart Calculator 🚀</h1>
+
+      <div class="time" id="clock"></div>
+    </div>
+
+    <!-- DISPLAY -->
+
+    <div class="display-box">
+
+      <input type="text" id="display" readonly>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+      <button class="clear" onclick="clearDisplay()">
+        C
+      </button>
+
+      <button class="delete" onclick="deleteLast()">
+        ⌫
+      </button>
+
+      <button class="operator" onclick="appendValue('%')">
+        %
+      </button>
+
+      <button class="operator" onclick="appendValue('/')">
+        ÷
+      </button>
+
+      <button class="number" onclick="appendValue('7')">7</button>
+      <button class="number" onclick="appendValue('8')">8</button>
+      <button class="number" onclick="appendValue('9')">9</button>
+
+      <button class="operator" onclick="appendValue('*')">
+        ×
+      </button>
+
+      <button class="number" onclick="appendValue('4')">4</button>
+      <button class="number" onclick="appendValue('5')">5</button>
+      <button class="number" onclick="appendValue('6')">6</button>
+
+      <button class="operator" onclick="appendValue('-')">
+        -
+      </button>
+
+      <button class="number" onclick="appendValue('1')">1</button>
+      <button class="number" onclick="appendValue('2')">2</button>
+      <button class="number" onclick="appendValue('3')">3</button>
+
+      <button class="operator" onclick="appendValue('+')">
+        +
+      </button>
+
+      <button class="number" onclick="appendValue('0')">0</button>
+
+      <button class="number" onclick="appendValue('.')">
+        .
+      </button>
+
+      <button class="equal" onclick="calculate()">
+        =
+      </button>
+
+    </div>
+
+    <!-- HISTORY -->
+
+    <div class="history">
+
+      <h3>History</h3>
+
+      <div id="historyList"></div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+      Made with HTML CSS and JavaScript
+    </footer>
+
+  </div>
+
+  <script>
+
+    let display =
+    document.getElementById("display");
+
+    let historyList =
+    document.getElementById("historyList");
+
+    // ADD VALUES
+
+    function appendValue(value){
+
+      display.value += value;
+
+    }
+
+    // CLEAR
+
+    function clearDisplay(){
+
+      display.value = "";
+
+    }
+
+    // DELETE
+
+    function deleteLast(){
+
+      display.value =
+      display.value.slice(0,-1);
+
+    }
+
+    // CALCULATE
+
+    function calculate(){
+
+      try{
+
+        let expression = display.value;
+
+        let result = eval(expression);
+
+        // HISTORY
+
+        historyList.innerHTML +=
+        expression + " = " + result + "<br>";
+
+        display.value = result;
+
+      }catch{
+
+        display.value = "Error";
+
+      }
+
+    }
+
+    // DIGITAL CLOCK
+
+    function updateClock(){
+
+      let now = new Date();
+
+      let time =
+      now.toLocaleTimeString();
+
+      document.getElementById("clock")
+      .innerHTML = time;
+
+    }
+
+    setInterval(updateClock,1000);
+
+  </script>
+
+</body>
+</html>
