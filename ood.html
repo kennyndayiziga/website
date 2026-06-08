@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background: linear-gradient(to right ,#141e30, #243b55);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .calculator{
+            width: 370px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 50px black;
+        }
+
+        .top{
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .top h1{
+            border-bottom: 10px;
+        }
+
+        .time{
+            font-size: 14px;
+            color: lightgray;
+        }
+
+        .display-box{
+            background: #222;
+            padding: 20px;
+        }
+        #display{
+            width: 100%;
+            height: 80px;
+            border: none;
+            outline: none;
+            background: black;
+            color: #00ff88;
+            border-radius: 20px;
+            padding: 10px;
+            font-size: 35px;
+            text-align: right;
+
+        }
+
+        .buttons{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        button{
+            height: 65px;
+            border-radius: 20px;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover{
+            transform: scale(1.05);
+        }
+
+        .number{
+            background: white;
+            box-shadow: 0 0 5px;
+        }
+
+        .operator{
+            background: orange;
+            color: white;
+            box-shadow: 0 0 5px;
+        }
+
+        .delete{
+            background: green;
+            color: white;
+        }
+
+        .clear{
+            background:red;
+            color: white;
+        }
+
+        .equal{
+            background: #00ff88;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+     <!--top-->
+        <div class="top">
+            <h1>smart culculator</h1>
+            <div class="time" id="clock"></div>
+        </div>
+
+        <!--display-->
+
+        <div class="display-box">
+            <input type="text" id="display" readonly>
+        </div>
+
+        <div class="buttons">
+
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="delete" onclick="deleteLast()">⌫</button>
+
+            <button class="operator" onclick="appendValue('%')">%</button>
+            <button class="operator" onclick="appendValue('/')">÷</button>
+
+            <button class="number" onclick="appendValue('7')">7</button>
+            <button class="number" onclick="appendValue('8')">8</button>
+            <button class="number" onclick="appendValue('9')">9</button>
+
+            <button class="operator" onclick="appendValue('*')">x</button>
+
+            <button class="number" onclick="appendValue('4')">4</button>
+            <button class="number" onclick="appendValue('5')">5</button>
+            <button class="number" onclick="appendValue9('6')">6</button>
+
+            <button class="operator" onclick="appendValue('-')">-</button>
+
+            <button class="number" onclick="appendValue('1')">1</button>
+            <button class="number" onclick="appendValue('2')">2</button>
+            <button class="number" onclick="appendValue('3')">3</button>
+            
+            <button class="operator" onclick="appendValue('+')">+</button>
+
+            <button class="number" onclick="appendValue('0')">0</button>
+            <button class="number" onclick="appendValue('.')">.</button>
+
+            <button class="equal" onclick="calculate()">=</button>
+            
+        </div>
+    
+    </div>
+</body>
+</html>

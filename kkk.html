@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+  <p id="fff"></p>
+ 
+  <script>
+  let age = 30;
+  let level ="level 3"
+  let text = "you can not eat";
+
+  if (level == "level 3") {
+   if (age <= 30) {
+    text = "you can eat";
+   }
+  }
+ 
+  document.getElementById("fff").innerHTML = text;
+  </script>
+  <p id="demo"></p>
+  
+  <script>
+    const hour = new Date().getHours();
+    let greeting;
+
+    if (hour < 18) {
+   greeting ="goody day";
+   } else {
+   greeting = "good evening";
+  }
+
+  document.getElementById("demo").innerHTML = greeting;
+ 
+  </script>
+
+</body>
+</html>
